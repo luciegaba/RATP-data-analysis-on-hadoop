@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS $basename.indicateur_qualite (
+CREATE TABLE IF NOT EXISTS ${basename}.indicateur_qualite (
 OperatorName STRING,
 Theme STRING,
 Indicateur STRING,
@@ -17,5 +17,5 @@ LINES TERMINATED BY '\n'
 STORED AS TEXTFILE tblproperties("skip.header.line.count"="1");
 
 LOAD DATA INPATH 'hdfs:$folder_name/indicateurs-qualite-service-sncf-ratp.csv'
-INTO TABLE $basename.indicateur_qualite;
-SELECT * FROM $basename.indicateur_qualite LIMIT 10;
+INTO TABLE ${basename}.indicateur_qualite;
+SELECT * FROM ${basename}.indicateur_qualite LIMIT 10;
