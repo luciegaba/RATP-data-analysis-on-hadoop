@@ -13,6 +13,6 @@ Arrondissement INT
 ) ROW FORMAT DELIMITED FIELDS TERMINATED BY "\u003B"
 LINES TERMINATED BY '\n'
 STORED AS TEXTFILE tblproperties("skip.header.line.count"="1");
-LOAD DATA INPATH 'hdfs:$folder_name/trafic-annuel-entrant-par-station-du-reseau-ferre-2021.csv'
+LOAD DATA INPATH 'hdfs:${hiveconf:folder_name}/trafic-annuel-entrant-par-station-du-reseau-ferre-2021.csv'
 INTO TABLE mosef_projet_ratp.trafic_2021;
 SELECT * FROM mosef_projet_ratp.trafic_2021 LIMIT 10;

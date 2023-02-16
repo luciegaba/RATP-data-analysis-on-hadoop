@@ -43,6 +43,6 @@ LINES TERMINATED BY '\n'
 STORED AS TEXTFILE tblproperties("skip.header.line.count"="1");
 
 
-LOAD DATA INPATH 'hdfs:$folder_name/emplacement-des-gares-idf.csv'
+LOAD DATA INPATH 'hdfs:${hiveconf:folder_name}/emplacement-des-gares-idf.csv'
 INTO TABLE mosef_projet_ratp.emplacement_gare;
 SELECT * FROM mosef_projet_ratp.emplacement_gare LIMIT 10;
