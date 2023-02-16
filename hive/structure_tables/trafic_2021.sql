@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS ${hiveconf:basename}.trafic_2021 (
+CREATE TABLE IF NOT EXISTS mosef_projet_ratp.trafic_2021 (
 Rang INT,
 Reseau STRING,
 Station STRING,
@@ -14,5 +14,5 @@ Arrondissement INT
 LINES TERMINATED BY '\n'
 STORED AS TEXTFILE tblproperties("skip.header.line.count"="1");
 LOAD DATA INPATH 'hdfs:$folder_name/trafic-annuel-entrant-par-station-du-reseau-ferre-2021.csv'
-INTO TABLE ${hiveconf:basename}.trafic_2021;
-SELECT * FROM ${hiveconf:basename}.trafic_2021 LIMIT 10;
+INTO TABLE mosef_projet_ratp.trafic_2021;
+SELECT * FROM mosef_projet_ratp.trafic_2021 LIMIT 10;

@@ -1,6 +1,6 @@
 
 
-CREATE TABLE IF NOT EXISTS ${hiveconf:basename}.projets(
+CREATE TABLE IF NOT EXISTS mosef_projet_ratp.projets(
 ID_LIGNE INT,
 ID_PROJET INT,
 NOM_PROJET STRING,
@@ -39,5 +39,5 @@ STORED AS TEXTFILE tblproperties("skip.header.line.count"="1");
 
 
 LOAD DATA INPATH 'hdfs:$folder_name/liste-transporteurs.csv'
-INTO TABLE ${hiveconf:basename}.projets_lignes;
-SELECT * FROM ${hiveconf:basename}.transporteurs LIMIT 10;
+INTO TABLE mosef_projet_ratp.projets_lignes;
+SELECT * FROM mosef_projet_ratp.transporteurs LIMIT 10;

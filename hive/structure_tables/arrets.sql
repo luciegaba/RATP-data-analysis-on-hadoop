@@ -1,6 +1,6 @@
 
 
-CREATE TABLE IF NOT EXISTS ${hiveconf:basename}.arrets(
+CREATE TABLE IF NOT EXISTS mosef_projet_ratp.arrets(
 route_id STRING,
 route_long_name STRING,
 stop_id STRING,
@@ -17,7 +17,7 @@ FIELDS TERMINATED BY "\u003B"
 LINES TERMINATED BY '\n'
 STORED AS TEXTFILE
 tblproperties("skip.header.line.count"="1");
-LOAD DATA INPATH 'hdfs:$folder_name/arrets-lignes.csv' INTO TABLE ${hiveconf:basename}.arrets;
-SELECT * FROM ${hiveconf:basename}.arrets LIMIT 10;
+LOAD DATA INPATH 'hdfs:$folder_name/arrets-lignes.csv' INTO TABLE mosef_projet_ratp.arrets;
+SELECT * FROM mosef_projet_ratp.arrets LIMIT 10;
 
 
