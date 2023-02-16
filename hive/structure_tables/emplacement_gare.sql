@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS $base_name.emplacement_gare (
+CREATE TABLE IF NOT EXISTS $basename.emplacement_gare (
   Geo_Point  STRING ,
   Geo_Shape  STRING ,
   gares_id  INT ,
@@ -44,5 +44,5 @@ STORED AS TEXTFILE tblproperties("skip.header.line.count"="1");
 
 
 LOAD DATA INPATH 'hdfs:$folder_name/emplacement-des-gares-idf.csv'
-INTO TABLE $base_name.emplacement_gare;
-SELECT * FROM $base_name.emplacement_gare LIMIT 10;
+INTO TABLE $basename.emplacement_gare;
+SELECT * FROM $basename.emplacement_gare LIMIT 10;

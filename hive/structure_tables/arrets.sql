@@ -1,6 +1,6 @@
 
 
-CREATE TABLE IF NOT EXISTS $base_name.arrets(
+CREATE TABLE IF NOT EXISTS $basename.arrets(
 route_id STRING,
 route_long_name STRING,
 stop_id STRING,
@@ -17,7 +17,7 @@ FIELDS TERMINATED BY "\u003B"
 LINES TERMINATED BY '\n'
 STORED AS TEXTFILE
 tblproperties("skip.header.line.count"="1");
-LOAD DATA INPATH 'hdfs:$folder_name/arrets-lignes.csv' INTO TABLE $base_name.arrets;
-SELECT * FROM $base_name.arrets LIMIT 10;
+LOAD DATA INPATH 'hdfs:$folder_name/arrets-lignes.csv' INTO TABLE $basename.arrets;
+SELECT * FROM $basename.arrets LIMIT 10;
 
 
