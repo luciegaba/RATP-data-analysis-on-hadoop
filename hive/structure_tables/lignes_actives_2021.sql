@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS ${basename}.lignes_actives_2021 (
+CREATE TABLE IF NOT EXISTS ${hiveconf:basename}.lignes_actives_2021 (
 ID_Line INT,
 Name_Line STRING,
 ShortName_Line STRING,
@@ -31,6 +31,6 @@ FIELDS TERMINATED BY "\u003B"
 LINES TERMINATED BY '\n'
 STORED AS TEXTFILE tblproperties("skip.header.line.count"="1");
 LOAD DATA INPATH 'hdfs:$folder_name/referentiel-des-lignes.csv'
-INTO TABLE ${basename}.lignes_actives_2021; 
+INTO TABLE ${hiveconf:basename}.lignes_actives_2021; 
 
-SELECT * FROM ${basename}.lignes_actives_2021 LIMIT 10;
+SELECT * FROM ${hiveconf:basename}.lignes_actives_2021 LIMIT 10;
