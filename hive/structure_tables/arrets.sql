@@ -17,7 +17,7 @@ FIELDS TERMINATED BY "\u003B"
 LINES TERMINATED BY '\n'
 STORED AS TEXTFILE
 tblproperties("skip.header.line.count"="1");
-LOAD DATA INPATH 'hdfs:${hiveconf:folder_name}/arrets-lignes.csv' INTO TABLE mosef_projet_ratp.arrets;
+LOAD DATA INPATH 'hdfs:${hivevar:folder_name}/arrets-lignes.csv' INTO TABLE mosef_projet_ratp.arrets;
 SELECT * FROM mosef_projet_ratp.arrets LIMIT 10;
 
 

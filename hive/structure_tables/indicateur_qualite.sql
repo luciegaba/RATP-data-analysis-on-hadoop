@@ -16,6 +16,6 @@ Penalite STRING
 LINES TERMINATED BY '\n'
 STORED AS TEXTFILE tblproperties("skip.header.line.count"="1");
 
-LOAD DATA INPATH 'hdfs:${hiveconf:folder_name}/indicateurs-qualite-service-sncf-ratp.csv'
+LOAD DATA INPATH 'hdfs:${hivevar:folder_name}/indicateurs-qualite-service-sncf-ratp.csv'
 INTO TABLE mosef_projet_ratp.indicateur_qualite;
 SELECT * FROM mosef_projet_ratp.indicateur_qualite LIMIT 10;

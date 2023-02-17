@@ -38,6 +38,6 @@ LINES TERMINATED BY '\n'
 STORED AS TEXTFILE tblproperties("skip.header.line.count"="1");
 
 
-LOAD DATA INPATH 'hdfs:${hiveconf:folder_name}/liste-transporteurs.csv'
+LOAD DATA INPATH 'hdfs:${hivevar:folder_name}/liste-transporteurs.csv'
 INTO TABLE mosef_projet_ratp.projets_lignes;
 SELECT * FROM mosef_projet_ratp.transporteurs LIMIT 10;
