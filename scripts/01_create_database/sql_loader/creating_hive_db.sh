@@ -1,0 +1,29 @@
+
+
+
+# CREATE A FOLDER FOR DATA ON HADOOP (NECESSARY IN OUR CASE TO MAKE TRANSFERS TO HIVE SQL)
+hadoop fs -mkdir "/tmp/projet_ratp"
+
+# BY DEFAUT IF YOU DOWNLOAD FROM GIT THE CONTENT WE NEED WILL BE AVAILABLE IN THIS FOLDER 
+tables_formats_folder="/tmp/RATP/RATP-data-analysis-project-main/scripts/01_create_database/tables_loaders/"
+
+# CREATE DATABASE
+beeline -n "$ssh_username" -p '$ssh_password' -u "jdbc:hive2://avisia-cluster-01:10000/default" -e """ CREATE DATABASE IF NOT EXISTS mosef_projet_ratp ;"""
+
+
+# WE ITERATE ON ALL FILES AVAILABLE IN OUR TABLES FORMATS FOLDER WHICH ARE SHELL SCRIPTS (EXECUTED WITH BASH) : ONE FILE == ONE TABLE TO LOAD
+# FOR EACH FILE:
+# - DOWNLOAD DATA WITH WGET FROM RATP OR IDF MOBILITES ON TMP DIR
+# -  PUT DATA FROM MACHINE TO HDFS
+# -  USE BEELINE CL TO CONNECT TO HIVE USING JDBC CONNECTOR AND EXECUTE SIMULTANEOUSLY SQL COMMANDS:
+#     *  CREATE TABLE WITH CORRECT FORMATS AND SPECIFY COLUMNS
+#     *  LOAD DATA FROM HDFS TO TABLE 
+
+# REFER TO ANY FILE IN TABLES_LOADERS TO SEE HOW IT WORKS 
+
+
+for single_table_creator in $(ls $tables_formats_folder ) 
+do
+    echo "Executing" $single_table_creator
+    bash $single_table_creator  # EXECUTE A SHELL FILE USING BASH 
+done
