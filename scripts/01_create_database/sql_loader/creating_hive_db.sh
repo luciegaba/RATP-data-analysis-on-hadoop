@@ -4,8 +4,9 @@
 # CREATE A FOLDER FOR DATA ON HADOOP (NECESSARY IN OUR CASE TO MAKE TRANSFERS TO HIVE SQL)
 hadoop fs -mkdir "/tmp/projet_ratp"
 
-# BY DEFAUT IF YOU DOWNLOAD FROM GIT THE CONTENT WE NEED WILL BE AVAILABLE IN THIS FOLDER 
-tables_formats_folder="/tmp/RATP/RATP-data-analysis-project-main/scripts/01_create_database/tables_loaders/"
+# BY DEFAUT IF YOU DOWNLOAD FROM GIT THE CONTENT WE NEED WILL BE AVAILABLE IN THIS FOLDER
+
+tables_formats_folder= project_path+"/scripts/01_create_database/sql_loader/tables_loaders/"
 
 # CREATE DATABASE
 beeline -n "$ssh_username" -p '$ssh_password' -u "jdbc:hive2://avisia-cluster-01:10000/default" -e """ CREATE DATABASE IF NOT EXISTS mosef_projet_ratp ;"""

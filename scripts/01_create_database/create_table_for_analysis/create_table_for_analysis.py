@@ -79,8 +79,7 @@ def main():
        .withColumnRenamed("Information voyageurs", "information_voyageur")\
        .withColumnRenamed("Propreté","proprete")\
        .withColumnRenamed("Sûreté","surete")
-    
-    return main_data
+    main_data.createOrReplaceTempView("main_data_for_analysis") 
     
 if __name__ == '__main__':
     main()
