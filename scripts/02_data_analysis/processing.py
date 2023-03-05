@@ -3,8 +3,7 @@ from pyspark.sql.functions import *
 from pyspark.sql import HiveContext
 from pyspark import SparkContext
 from pyspark.ml.feature import *
-
-
+from ml import ml_pipeline
 def preprocess_pipeline():
     # Hive context + requête SQL pour récupérer la table créée dans l'étape 1
     sc = SparkContext.getOrCreate()
@@ -95,5 +94,5 @@ def quant_process(X,quant_features):
     return X_quant
 
 if __name__ == '__main__':
-    preprocess_pipeline()
-    
+    X,y=preprocess_pipeline()
+    ml_pipeline(X,y)

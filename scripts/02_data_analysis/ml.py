@@ -2,9 +2,12 @@
 from pyspark.ml.classification import LogisticRegression
 from pyspark.ml.tuning import CrossValidator, ParamGridBuilder
 from pyspark.ml.evaluation import BinaryClassificationEvaluator
+import pandas as pd
+import numpy as np
 
 
-def prepare_data_for_ml(data):
+def prepare_data_for_ml(X,y):
+    data= X.join(y, on=["stop_name"], how="left")
     (train_data, test_data) = data.randomSplit([0.7, 0.3], seed=100)
     return train_data, test_data
 
@@ -33,18 +36,20 @@ def lr_model(train_data):
 
 def results_model(model):
     # Affichage des coefficients du modèle
-    print("Coefficients: " + str(model.coefficients))
-    summary = model.summary
-    print("Ajustement du modèle:")
-    print("ROC: %f" % summary.areaUnderROC)
+    OddRatios=np.exp( model.coefficientMatrix.toArray())
+    OddRatios = pd.DataFrame(data=coeffMatrix, columns=['contact_voyageur', 'information_voyageur', 'proprete', 'surete', 'sum_correspondance','METRO 14', 'METRO 9', 'RER B', 'METRO 13', 'METRO 2'])
+    print("Odd Ratios de la régression logistique polytomique :")
+    print(OddRatios)
+# Ajouter une ligne pour les constantes du modèle
 
+# Utiliser la fonction print() pour afficher le DataFrame
 
-def main():
-    train_data,test_data = prepare_data_for_ml(data)
+def ml_pipeline():
+    train_data,test_data = prepare_data_for_ml(X,y)
     model = lr_model(train_data)
     results_model(model)
 
 if __name__ == '__main__':
-    main()
+    ml_pipeline()
     
 
